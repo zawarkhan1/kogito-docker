@@ -226,13 +226,13 @@ services:
       - postgres
       - vault
 
-  opa:
-    image: openpolicyagent/opa:latest-debug
-    command: run --ignore='.*' --server /policies --log-level debug
-    volumes:
-      - /Users/zawar/Modules/cust-opa/service-authz-policies:/policies  # todo: adjust path
-    ports:
-      - 8181:8181
+#  opa:
+#    image: openpolicyagent/opa:latest-debug
+#    command: run --ignore='.*' --server /policies --log-level debug
+#    volumes:
+#      - /Users/zawar/Modules/cust-opa/service-authz-policies:/policies  # todo: adjust path
+#    ports:
+#      - 8181:8181
 
 
   redis:
@@ -242,20 +242,20 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
 
-  prompt:
-    image: 187429986583.dkr.ecr.us-east-1.amazonaws.com/din-global/prompt:latest
-    ports:
-      - 1010:9090
-    environment:
-      spring_datasource_url: "jdbc:postgresql://postgres:5432/workflow"
-      spring_datasource_username: postgres
-      spring_datasource_password: postgres
-      spring_liquibase_url: "jdbc:postgresql://postgres:5432/workflow"
-      spring_liquibase_user: postgres
-      spring_liquibase_password: postgres
-      grpc_auth_jwt_active: "false"
-    depends_on:
-      - postgres
+#  prompt:
+#    image: 187429986583.dkr.ecr.us-east-1.amazonaws.com/din-global/prompt:latest
+#    ports:
+#      - 1010:9090
+#    environment:
+#      spring_datasource_url: "jdbc:postgresql://postgres:5432/workflow"
+#      spring_datasource_username: postgres
+#      spring_datasource_password: postgres
+#      spring_liquibase_url: "jdbc:postgresql://postgres:5432/workflow"
+#      spring_liquibase_user: postgres
+#      spring_liquibase_password: postgres
+#      grpc_auth_jwt_active: "false"
+#    depends_on:
+#      - postgres
 
 #  customer:
 #    image: dg/customer
